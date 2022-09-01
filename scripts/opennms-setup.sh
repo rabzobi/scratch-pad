@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version_prefix=31.0.0-SNAPSHOT
-opennms_root=/root/opennms
+opennms_root=$HOME/opennms
 opennms_target_version="$opennms_root/target/opennms-$version_prefix"
 
 #kill -9 $(ps aux | grep opennms | grep -v grep | awk '{print $2}')
