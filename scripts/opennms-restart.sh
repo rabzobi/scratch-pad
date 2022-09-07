@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 $HOME/opennms/target/opennms-31.0.0-SNAPSHOT/bin/opennms stop
 $HOME/opennms/target/opennms-31.0.0-SNAPSHOT/bin/opennms -t start

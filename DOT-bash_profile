@@ -1,0 +1,26 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+PS1="\\[$(tput setaf 1)\\]\\u@\\h:\\w$ \\[$(tput sgr0)\\]"
+
+
+export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
+
+PATH=$PATH:/opt/homebrew/bin
+PATH=$PATH:/Users/rellis/scratch-pad/scripts
+PATH=$PATH:/Users/rellis/opennms/maven/bin
+PATH=$PATH:$OPENNMS_HOME/bin
+PATH=$PATH:/opt/homebrew/opt/openssl@3/bin
+export PATH=$PATH
+
+HISTTIMEFORMAT="%F %T "
+HISTSIZE= 
+HISTFILESIZE=
+
+
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+ulimit -n 999666
+
+clear

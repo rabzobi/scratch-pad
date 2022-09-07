@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /root/opennms
+cd $HOME/opennms
 
-ulimit -n 1000000
+ulimit 
 time (./clean.pl && ./compile.pl -U -DskipTests && ./assemble.pl -p dir -DskipTests)
