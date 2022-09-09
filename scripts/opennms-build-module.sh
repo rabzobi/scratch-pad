@@ -1,13 +1,13 @@
 #!/bin/bash
 
-module_name=opennms-webapp
+module_name=core
 version_prefix=31.0.0-SNAPSHOT
 file_type=jar
 
 module_with_version="$module_name-$version_prefix"
 archive_name="$module_with_version.$file_type"
 
-opennms_root=/root/opennms
+opennms_root=$HOME/opennms
 module_path="$opennms_root/$module_name"
 
 source_arch_path="$module_path/target/$module_with_version/WEB-INF/lib/$archive_name"

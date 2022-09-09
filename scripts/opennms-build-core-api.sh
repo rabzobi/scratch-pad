@@ -4,13 +4,18 @@
 killall -9 java
 
 
-cd $HOME/opennms/opennms-webapp-rest
+cd $HOME/opennms/core/api
 mvn clean compile install
 
-SRC=$HOME/opennms/opennms-webapp-rest/target/opennms-webapp-rest-31.0.0-SNAPSHOT/WEB-INF/lib/opennms-webapp-rest-31.0.0-SNAPSHOT.jar
-DEST=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT/jetty-webapps/opennms/WEB-INF/lib/opennms-webapp-rest-31.0.0-SNAPSHOT.jar
+
+SRC=$HOME/opennms/core/api/target/org.opennms.core.api-31.0.0-SNAPSHOT.jar
+
+
+DEST=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT/system/org/opennms/core/org.opennms.core.api/31.0.0-SNAPSHOT/org.opennms.core.api-31.0.0-SNAPSHOT.jar
+DEST2=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT/lib/org.opennms.core.api-31.0.0-SNAPSHOT.jar
 
 cp $SRC $DEST
+cp $SRC $DEST2
 
 $HOME/opennms/target/opennms-31.0.0-SNAPSHOT/bin/opennms -t start
 
