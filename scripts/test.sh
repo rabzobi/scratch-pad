@@ -2,10 +2,10 @@
 
 if [ -z $1 ] ; then
 	echo "Provide test name"
-	echo "Eg MonitoringLocationRestServiceIT#testListLimitAndSort"
+	echo "Eg MonitoringLocationRestServiceIT#testListLimitAndSortLong"
 	exit 1
 fi
 
-$HOME/opennms/target/opennms-31.0.0-SNAPSHOT/bin/opennms stop
+kill-nms.sh
 
-mvn -Dtest=$1 verify
+mvn clean compile -Dtest=$1 verify
