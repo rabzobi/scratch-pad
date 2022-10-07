@@ -15,4 +15,4 @@ else
 	echo "No running instance found."
 fi
 
-echo "Kill script done"
+echo "Kill script done"	

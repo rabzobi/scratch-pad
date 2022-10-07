@@ -6,12 +6,15 @@
 # I also have scratch-pad/scripts on my PATH
 #
 
-source var.sh
 kill-nms.sh
+source var.sh
 
 cd $OMNS_SRC
 pwd
+
+# Set open file limit
 ulimit 999666
+
 time (./clean.pl && ./compile.pl -U -DskipTests && ./assemble.pl -p dir -DskipTests)
 
 echo "RUNAS=$USER" > "$OPENNMS_HOME/etc/opennms.conf" || exit 1
