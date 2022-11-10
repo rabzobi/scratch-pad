@@ -8,6 +8,7 @@ export OPENNMS_SRC=$HOME/opennms
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
 
 PATH=$PATH:/opt/homebrew/bin
+PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/scratch-pad/scripts
 PATH=$PATH:$HOME/opennms/maven/bin
 PATH=$PATH:$OPENNMS_HOME/bin
