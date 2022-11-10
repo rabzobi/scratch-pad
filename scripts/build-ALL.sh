@@ -15,14 +15,12 @@ pwd
 # Set open file limit
 ulimit 999666
 
-time (./clean.pl && ./compile.pl -U -DskipTests && ./assemble.pl -p dir -DskipTests)
+echo "Need to run this coz it won't run in script:"
+echo "time (./clean.pl && ./compile.pl -U -DskipTests && ./assemble.pl -p dir -DskipTests)"
 
-echo "RUNAS=$USER" > "$OPENNMS_HOME/etc/opennms.conf" || exit 1
+echo "echo RUNAS=$USER > $OPENNMS_HOME/etc/opennms.conf"
 #sed -i 's,password="",password="YOUR-POSTGRES-PASSWORD",g' "$opennms_target_version/etc/opennms-datasources.xml" || exit 1
 #sed -i 's,password="",password="",g' "$opennms_target_version/etc/opennms-datasources.xml" || exit 1
 
-eval "$OPENNMS_HOME/bin/runjava -s" || exit 1
-eval "$OPENNMS_HOME/bin/install -dis" || exit 1
-
-echo "Done"
-exit 0
+echo "$OPENNMS_HOME/bin/runjava -s"
+echo "$OPENNMS_HOME/bin/install -dis"

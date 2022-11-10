@@ -3,16 +3,10 @@
 kill-nms.sh
 
 cd $OPENNMS_SRC/opennms-webapp-rest
-mvn clean test '-Dtest=IfServicesRestServiceIT'
-
-mvn test '-Dtest=MonitoringLocationRestServiceIT'
-mvn test '-Dtest=ClassificationRulePageIT'
-
-exit 1
+mvn test '-Dtest=**IT' || exit 1
 
 cd $OPENNMS_SRC/features/rest/mapper/
-mvn test '-Dtest=**Test'
-
+mvn test '-Dtest=**Test' || exit 1
 
 cd $OPENNMS_SRC/smoke-test/
-mvn test -Dtest=org.opennms.smoketest.ClassificationRulePageIT
+mvn test -Dtest=org.opennms.smoketest.ClassificationRulePageIT || exit 1

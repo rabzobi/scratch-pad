@@ -1,17 +1,23 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
-PS1="\\[$(tput setaf 1)\\]\\u@\\h:\\w$ \\[$(tput sgr0)\\]"
-
+#PS1="\\[$(tput setaf 1)\\]\\u@\\h:\\w$ \\[$(tput sgr0)\\]"
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
+export OPENNMS_SRC=$HOME/opennms
+
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
 
 PATH=$PATH:/opt/homebrew/bin
-PATH=$PATH:/Users/rellis/scratch-pad/scripts
-PATH=$PATH:/Users/rellis/opennms/maven/bin
+PATH=$PATH:$HOME/scratch-pad/scripts
+PATH=$PATH:$HOME/opennms/maven/bin
 PATH=$PATH:$OPENNMS_HOME/bin
 PATH=$PATH:/opt/homebrew/opt/openssl@3/bin
 export PATH=$PATH
 
+export PAGERDUTY_ROUTING_KEY="bf0725a2bffb4904c00de7a871530625"
+
+
+# I like to keep all my bash history with timestamps
 HISTTIMEFORMAT="%F %T "
 HISTSIZE= 
 HISTFILESIZE=
@@ -21,6 +27,10 @@ alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+# Very important to set ulimit to build OpenNMS
 ulimit -n 999666
+
+source ~/scratch-pad/git-completion.bash
+source ~/scratch-pad/git-prompt.sh
 
 clear
