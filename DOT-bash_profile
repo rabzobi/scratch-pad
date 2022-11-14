@@ -1,6 +1,7 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 #PS1="\\[$(tput setaf 1)\\]\\u@\\h:\\w$ \\[$(tput sgr0)\\]"
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
 
 export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
 export OPENNMS_SRC=$HOME/opennms
@@ -13,6 +14,7 @@ PATH=$PATH:$HOME/scratch-pad/scripts
 PATH=$PATH:$HOME/opennms/maven/bin
 PATH=$PATH:$OPENNMS_HOME/bin
 PATH=$PATH:/opt/homebrew/opt/openssl@3/bin
+PATH=$PATH:$HOME/liquibase
 export PATH=$PATH
 
 export PAGERDUTY_ROUTING_KEY="bf0725a2bffb4904c00de7a871530625"
@@ -33,5 +35,11 @@ ulimit -n 999666
 
 source ~/scratch-pad/git-completion.bash
 source ~/scratch-pad/git-prompt.sh
+
+# Portal Backend
+export CLOUDSUFFIX=-dev
+export PG_PORTAL_PASSWORD=password
+export PG_PORTAL_USER=portal
+export PG_PORTAL_URL=jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public
 
 clear
