@@ -1,7 +1,7 @@
 # scratch-pad
 
-These scripts work for me but will probably NOT work for you out of the box
-Please read all of them before running them and adjust paths to yours.
+Some scripts I used for building and running parts of open nms
+Please read them before running them and adjust to your needs
 
 # Bash
 ```
@@ -14,8 +14,12 @@ docker-compose -f opennms-db.yml up -d
 ~/scratch-pad/scripts/opennms-setup.sh
 To get inside container:
 docker exec -it postgres_container bash
+
+NOTE when you are setting up a connection for pg_admin to localhost use the container name and NOT localhost
 ```
 # Postfix
 Opennms mail needs you to start postfix (which should be installed by default)
 
 > rellis@BFSMRELLIS:~$ sudo postfix start
+
+
