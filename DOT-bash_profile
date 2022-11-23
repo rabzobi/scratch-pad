@@ -6,7 +6,8 @@ PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
 export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
 export OPENNMS_SRC=$HOME/opennms
 
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
+#export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1/
 
 PATH=$PATH:/opt/homebrew/bin
 PATH=$PATH:$HOME/bin
@@ -20,7 +21,7 @@ export PATH=$PATH
 export PAGERDUTY_ROUTING_KEY="bf0725a2bffb4904c00de7a871530625"
 
 
-# I like to keep all my bash history with timestamps
+# I like to keep all my bash history with timestamps	
 HISTTIMEFORMAT="%F %T "
 HISTSIZE= 
 HISTFILESIZE=
@@ -37,9 +38,10 @@ source ~/scratch-pad/git-completion.bash
 source ~/scratch-pad/git-prompt.sh
 
 # Portal Backend
+export CPP_FLAGS="-I/opt/homebrew/opt/openjdk@11"
 export CLOUDSUFFIX=-dev
-export PG_PORTAL_PASSWORD=password
-export PG_PORTAL_USER=portal
-export PG_PORTAL_URL=jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public
+#export PG_PORTAL_PASSWORD=password
+#export PG_PORTAL_USER=opennms
+#export PG_PORTAL_URL=jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public
 
 clear
