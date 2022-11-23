@@ -1,12 +1,9 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
-#PS1="\\[$(tput setaf 1)\\]\\u@\\h:\\w$ \\[$(tput sgr0)\\]"
-#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
 
+# These values are used in some of my scripts
 export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
 export OPENNMS_SRC=$HOME/opennms
 
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
 
 PATH=$PATH:/opt/homebrew/bin
 PATH=$PATH:$HOME/bin
@@ -14,8 +11,7 @@ PATH=$PATH:$HOME/scratch-pad/scripts
 PATH=$PATH:$HOME/opennms/maven/bin
 PATH=$PATH:$OPENNMS_HOME/bin
 PATH=$PATH:/opt/homebrew/opt/openssl@3/bin
-PATH=$PATH:$HOME/liquibase
-export PATH=$PATH
+export PATH=$PATH:$HOME/liquibase
 
 export PAGERDUTY_ROUTING_KEY="bf0725a2bffb4904c00de7a871530625"
 
@@ -25,21 +21,36 @@ HISTTIMEFORMAT="%F %T "
 HISTSIZE= 
 HISTFILESIZE=
 
+# You can use this Ubuntu
+#export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+# This one is for MacOS
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1/
+
 
 alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-# Very important to set ulimit to build OpenNMS
+# Increas open files limit to build Classic
 ulimit -n 999666
 
 source ~/scratch-pad/git-completion.bash
 source ~/scratch-pad/git-prompt.sh
 
-# Portal Backend
+# Set Bash to display branch name when it git repo
+PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
+
+
+# Used for portal backend build
 export CLOUDSUFFIX=-dev
-export PG_PORTAL_PASSWORD=password
-export PG_PORTAL_USER=portal
-export PG_PORTAL_URL=jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public
+
+export PG_PORTAL_URL="jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public"
+export PG_PORTAL_USER="opennms"
+export PG_PORTAL_PASSWORD="qwerty"
+
+export PG_INTERNAL_URL="jdbc:postgresql://127.0.0.1:5432/internal?currentSchema=public"
+export PG_INTERNAL_USER="opennms"
+export PG_INTERNAL_PASSWORD="qwerty
 
 clear
