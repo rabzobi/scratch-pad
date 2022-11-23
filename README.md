@@ -10,7 +10,7 @@ ln -s ~/scratch-pad/DOT-bash_profile ~/.bash_profile
 ```
 # DB
 ```
-docker-compose -f opennms-db.yml up -d
+sudo docker-compose -f opennms-db.yml up -d
 ~/scratch-pad/scripts/opennms-setup.sh
 To get inside container:
 docker exec -it postgres_container bash
