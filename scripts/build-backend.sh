@@ -9,7 +9,7 @@ if [ -z $FUNC ] ; then
 fi
 
 if [ ! -d $APP ] ; then
-	echo "$APP directory does not exist. You must be in the root of the repod"
+	echo "$APP directory does not exist. You must be in the root of the repo"
 	exit 1
 fi
 
@@ -24,7 +24,7 @@ START=`date +"%s"`
 mvn --quiet -T 4 package -pl $APP -am -Dkotlin.compiler.incremental=true -DskipTests &
 PID=$! 
 
-echo "Wating for maven PID=$PID to exit, running quite but errors and warn will be shown"
+echo "Waiting for maven PID=$PID to exit, running quite but errors and warn will be shown"
 
 while kill -0 $PID 2>/dev/null
 do
