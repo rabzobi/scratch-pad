@@ -1,10 +1,12 @@
 #!/bin/bash
 
 FUNC=$1
+CLEAN=$2
 APP=$FUNC-functionapp
 
 if [ -z $FUNC ] ; then
-	echo "Usage: $0 [internal|external|portal]"
+	echo "Usage: $0 [internal|external|portal] (CLEAN)"
+	echo "Add clean if you want it"
 	exit 1
 fi
 
@@ -20,11 +22,15 @@ fi
 
 
 echo "Compiling with CLOUDSUFFIX=$CLOUDSUFFIX"
+if [ ! -z $CLEAN ] ; then
+	echo "With clean"
+	CLEAN=clean
+fi
 START=`date +"%s"`
-mvn --quiet -T 4 package -pl $APP -am -Dkotlin.compiler.incremental=true -DskipTests &
+mvn --quiet -T 4 package $CLEAN -pl $APP -am -Dkotlin.compiler.incremental=true -DskipTests &
 PID=$! 
 
-echo "Waiting for maven PID=$PID to exit, running quite but errors and warn will be shown"
+echo "Waiting for maven PID=$PID to exit, running quite"
 
 while kill -0 $PID 2>/dev/null
 do
@@ -33,7 +39,7 @@ do
 	MINPADDED=`printf "%02d" $MINUTES`
 	SECONDS=$(($DURATION % 60))
 	SECPADDED=`printf "%02d" $SECONDS`
-	printf "\rElapsed=$MINPADDED:$SECPADDED  Load`uptime | cut -d: -f5`"
+	printf "\rElapsed=$MINPADDED:$SECPADDED"
 	sleep 1
 done
 

@@ -46,7 +46,7 @@ fi
 
 if [ -z $OKTA_ISSUER ] ; then
 	echo "OKTA_ISSUER not set"
-	echo "Get your tocken, by taking your bearer, put it in jwt.io and use the ISS in the payload"
+	echo "Get your token, by taking your bearer, put it in jwt.io and use the ISS in the payload"
 	echo "If you bearer changes you will need to change your bearer"
 	exit 1
 else

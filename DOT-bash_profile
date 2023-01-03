@@ -35,21 +35,40 @@ alias grep='grep --color=auto'
 ulimit -n 999666
 
 # Set Bash to display branch name when it git repo
-source ~/scratch-pad/git-completion.bash
+source ~/scratch-pad/git-completion.BASH_SILENCE_DEPRECATION_WARNING
 source ~/scratch-pad/git-prompt.sh
 PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
+
+
+# Ben's aliases
+alias run_portal='mvn -T 4 package -pl portal-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl portal-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
+alias run_external='mvn -T 4 package -pl external-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl external-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
+alias run_internal='mvn -T 4 package -pl internal-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl internal-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
+alias cloud_portal='./gradlew azureFunctionsRun ; pkill -9 -f /usr/lib/azure-functions-core-tools-4/func'
+
+
+
+# Andy's aliases
+alias bebuild='mvn install -DskipTests=true'
+alias becleanbuild='mvn -T 4 clean && mvn -T 4 install -DskipTests=true'
+alias befix='mvn -pl . antrun:run@ktlint-format'
+alias berun='mvn package azure-functions:run -DenableDebug -DskipTests -X'
 
 
 # Used for portal backend build
 export CLOUDSUFFIX=-dev
 export CPP_FLAGS="-I/opt/homebrew/opt/openjdk@11"
 
-export PG_PORTAL_URL="jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public"
-export PG_PORTAL_USER="opennms"
-export PG_PORTAL_PASSWORD="qwerty"
+#export PG_PORTAL_URL="jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public"
+#export PG_PORTAL_USER="opennms"
+#export PG_PORTAL_PASSWORD="qwerty"
 
-export PG_INTERNAL_URL="jdbc:postgresql://127.0.0.1:5432/internal?currentSchema=public"
-export PG_INTERNAL_USER="opennms"
-export PG_INTERNAL_PASSWORD="qwerty"
+#export PG_INTERNAL_URL="jdbc:postgresql://127.0.0.1:5432/internal?currentSchema=public"
+#export PG_INTERNAL_USER="opennms"
+#export PG_INTERNAL_PASSWORD="qwerty"
+
+#export DATASOURCES_DEFAULT_URL="jdbc:postgresql://127.0.0.1:5432/portal2"
+#export DATASOURCES_DEFAULT_USERNAME=opennms
+#export DATASOURCES_DEFAULT_PASSWORD=qwerty
 
 clear
