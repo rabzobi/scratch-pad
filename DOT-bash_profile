@@ -44,8 +44,9 @@ PS1='[\u@\h $(__git_ps1 " (%s)") \W]\$ '
 alias run_portal='mvn -T 4 package -pl portal-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl portal-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
 alias run_external='mvn -T 4 package -pl external-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl external-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
 alias run_internal='mvn -T 4 package -pl internal-functionapp -am -Dkotlin.compiler.incremental=true -DskipTests && mvn azure-functions:run -pl internal-functionapp -Dkotlin.compiler.incremental=true -DenableDebug'
-alias cloud_portal='./gradlew azureFunctionsRun ; pkill -9 -f /usr/lib/azure-functions-core-tools-4/func'
+alias cloud_portal='./gradlew azureFunctionsRun ; pkill -9 func'
 
+# to be safe you could run "kill -9 -f /<path to func>/func'
 
 
 # Andy's aliases
