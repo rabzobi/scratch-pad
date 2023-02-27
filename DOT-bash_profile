@@ -24,7 +24,7 @@ HISTFILESIZE=
 #export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 # This one is for MacOS
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.6
 
 
 alias ll='ls -alF'
