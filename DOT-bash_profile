@@ -1,5 +1,10 @@
 #export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# This should actually run only once at startup 
+# It makes dock appear almost instantly on your current screen.
+# I know there are better ways to do this
+defaults write com.apple.Dock autohide-delay -float 0.0001; killall Dock
+
 # These values are used in some of my scripts
 export OPENNMS_HOME=$HOME/opennms/target/opennms-31.0.0-SNAPSHOT
 export OPENNMS_SRC=$HOME/opennms
@@ -58,7 +63,7 @@ alias berun='mvn package azure-functions:run -DenableDebug -DskipTests -X'
 
 # Used for portal backend build
 export CLOUDSUFFIX=-dev
-export CPP_FLAGS="-I/opt/homebrew/opt/openjdk@11"
+#export CPP_FLAGS="-I/opt/homebrew/opt/openjdk@11"
 
 #export PG_PORTAL_URL="jdbc:postgresql://127.0.0.1:5432/portal?currentSchema=public"
 #export PG_PORTAL_USER="opennms"
@@ -71,5 +76,53 @@ export CPP_FLAGS="-I/opt/homebrew/opt/openjdk@11"
 #export DATASOURCES_DEFAULT_URL="jdbc:postgresql://127.0.0.1:5432/portal2"
 #export DATASOURCES_DEFAULT_USERNAME=opennms
 #export DATASOURCES_DEFAULT_PASSWORD=qwerty
+
+# Git Configurations from Thomas
+git config --global user.name "Rob Ellis"
+git config --global user.email "rellis@opennms.com"
+git config --global color.ui true
+git config --global format.pretty oneline
+git config --global core.eol lf
+git config --global core.autocrl input
+git config --global core.fileMode true
+git config --global pull.rebase false
+git config --global alias.lol "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.p "push"
+git config --global alias.c "commit"
+git config --global alias.a "add"
+git config --global alias.b "branch --sort=-committerdate -v"
+git config --global alias.s "status"
+git config --global alias.co "checkout"
+git config --global alias.r "rebase"
+git config --global alias.g "grep"
+git config --global alias.ri2 "rebase -i HEAD~2"
+git config --global alias.undo "reset --soft HEAD~1"
+git config --global alias.pull "pull --tags"
+
+alias k='kubectl'
+alias i='mvn clean install -DskipTests -P rapid-build'
+alias up='tilt up --port 10350 --stream'
+alias down='tilt down && watch kubectl get pods'
+
+HS=/Users/rellis/horizon-stream
+
+function build_service() {
+ service="$1"
+ cd "$HS/$service"
+ mvn clean install -DskipTests
+}
+
+function cucumber_run() {
+ service="$1"
+ cd "$HS/$service/docker-it"
+ mvn test "-Dapplication.docker.image=opennms/horizon-stream-$service" "-Dtest=CucumberRunnerIT" "-Dcucumber.filter.tags=@run"
+}
+
+function cucumber_build_run() {
+ service="$1"
+ cd "$HS/$service/docker-it"
+ build_service $service
+ cucumber_run $service
+}
 
 clear
